@@ -1,16 +1,21 @@
-<h1>WHAT IS THE WEATHER TODAY?</h1>
-<%= form_tag root_path, style: "z-index: 1000;", method: :get do %>
-            <div class="form-home">
-              <%= text_field_tag :query,
+<div class="main-body">
+  <h1>WHAT IS THE WEATHER TODAY?</h1>
+  <div class="location-input">
+    <%= form_tag root_path, style: "z-index: 1000;", method: :get do %>
+      <%= text_field_tag :query,
                 params[:query],
-                placeholder: "Where are you now?"
+                placeholder: "Where are you?",
+                class: "location-input_box"
               %>
-              <%= button_tag "Go!" %>
-              </div>
-<% end %>
-
-<% if @final_output.present?%>
-<%= @final_output["main"]["temp"] %>
-<% else %>
-<h3>Please type your location in the search bar</h3>
-<% end %>
+      <%= button_tag "Go!" %>
+    </div>
+  <% end %>
+  <% if @final_output.present?%>
+  <h3>The temperature is: </h3>
+    <%= @final_output["main"]["temp"] %>
+    <h3>Cloud Cover:</h3>
+    <%= @final_output[""] %>
+  <% else %>
+    <h3>Please type your location in the search bar</h3>
+  <% end %>
+</div>
