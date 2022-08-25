@@ -26,19 +26,23 @@
         </p>
       </div>
     <% else %>
+    <div class="prompt-text">
       <h3>Please type your location in the search bar</h3>
+      </div>
     <% end %>
   </div>
   <div class="to-do">
-    <% if @final_output["main"]["temp"].to_i.between?(20, 34) %>
-      <h3>The weather appears to be nice!</h3>
-      <h2>GO TO THE PUB</h2>
-    <% elsif @final_output["main"]["temp"].to_i.between?(35, 50)%>
+    <% if @final_output.present? && @final_output["main"]["temp"].to_i.between?(20, 34) %>
+      <h3>Check out the weather!</h3>
+      <h2>REMEMBER TO WEAR SUN SCREEN</h2>
+    <% elsif @final_output.present? && @final_output["main"]["temp"].to_i.between?(35, 50)%>
       <h3>The weather is far too hot!</h3>
       <h2>FIND YOURSELF SOMEWHERE COOL</h2>
-      <% else  @final_output["main"]["temp"].to_i.between?(1, 19)%>
+      <% elsif  @final_output.present? && @final_output["main"]["temp"].to_i.between?(1, 19)%>
       <h3>The weather is getting chilly</h3>
-      <h2>GET THE HEATING ON</h2>
+      <h2>TIME TO GET YOUR JACKET </h2>
+      <% else %>
+      <h1> </h1>
     <%end%>
     </div>
 </div>
