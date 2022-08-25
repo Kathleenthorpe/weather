@@ -3,8 +3,20 @@ body {
 }
 
 .about-contents {
+  display: flex;
+  flex-wrap: wrap;
   height: 30px;
   width: 500px;
   text-align: left;
   margin: 0 auto;
+}
+
+.try-it {
+  color: pink;
+  margin-top: 20px;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 20px;
 }
