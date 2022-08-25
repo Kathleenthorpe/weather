@@ -1,7 +1,7 @@
 <div class="main-body">
   <h1>WHAT IS THE WEATHER TODAY?</h1>
   <div class="location-input">
-    <%= form_tag root_path, style: "z-index: 1000;", method: :get do %>
+    <%= form_tag root_path, method: :get do %>
       <%= text_field_tag :query,
                 params[:query],
                 placeholder: "Where are you?",
@@ -26,8 +26,8 @@
         </p>
       </div>
     <% else %>
-    <div class="prompt-text">
-      <h3>Please type your location in the search bar</h3>
+      <div class="prompt-text">
+        <h3>Please type your location in the search bar</h3>
       </div>
     <% end %>
   </div>
@@ -38,11 +38,11 @@
     <% elsif @final_output.present? && @final_output["main"]["temp"].to_i.between?(35, 50)%>
       <h3>The weather is far too hot!</h3>
       <h2>FIND YOURSELF SOMEWHERE COOL</h2>
-      <% elsif  @final_output.present? && @final_output["main"]["temp"].to_i.between?(1, 19)%>
+    <% elsif  @final_output.present? && @final_output["main"]["temp"].to_i.between?(1, 19)%>
       <h3>The weather is getting chilly</h3>
       <h2>REMEMBER TO TAKE A JACKET</h2>
-      <% else %>
+    <% else %>
       <h1> </h1>
     <%end%>
-    </div>
+  </div>
 </div>
